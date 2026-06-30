@@ -1,0 +1,6 @@
+# Ignore raw heavy image
+Anh trinh chieu tot nghiep.png
+
+# Ignore utility python script
+compress_image.py
+deploy.sh

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Thư mời tham dự Lễ tốt nghiệp của Phạm Thành Nam tại Trường Đại học Công nghệ - ĐHQGHN ngày 05/07/2026. Rất hân hạnh được đón tiếp bạn!">
+    <meta property="og:title" content="Thư Mời Lễ Tốt Nghiệp - Phạm Thành Nam">
+    <meta property="og:description" content="Trân trọng kính mời thầy cô, gia đình và bạn bè tới tham dự lễ tốt nghiệp của Nam vào ngày 05/07/2026 tại VNU UET.">
+    <meta property="og:image" content="anh-tot-nghiep-opt.webp">
+    <meta property="og:type" content="website">
+    
+    <title>Thư Mời Lễ Tốt Nghiệp - Phạm Thành Nam</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&family=Montserrat:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Background Sparkles -->
+    <div id="particles-container"></div>
+
+    <!-- Music Player -->
+    <div class="music-player-container" id="music-player">
+        <button id="music-toggle" class="music-btn" aria-label="Toggle Music">
+            <i class="fas fa-music"></i>
+            <span class="music-wave">
+                <span></span><span></span><span></span><span></span>
+            </span>
+        </button>
+        <audio id="bg-music" loop preload="auto">
+            <!-- Gentle piano graduation melody -->
+            <source src="https://assets.mixkit.co/music/preview/mixkit-beautiful-dream-2852.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <main class="main-container">
+        <!-- Hero Section -->
+        <section class="hero-section" id="hero">
+            <div class="academic-cap-icon">
+                <i class="fa-solid fa-graduation-cap"></i>
+            </div>
+            <p class="subtitle-invitation">GRADUATION INVITATION</p>
+            <h1 class="main-title">THƯ MỜI</h1>
+            <p class="sub-title">Lễ Tốt Nghiệp của</p>
+            <h2 class="student-name">PHẠM THÀNH NAM</h2>
+            <div class="divider-gold">
+                <span class="diamond"></span>
+            </div>
+            <p class="university-name">Trường Đại học Công nghệ (UET)<br>Đại học Quốc gia Hà Nội</p>
+        </section>
+
+        <!-- Photo Section -->
+        <section class="photo-section" id="photo">
+            <div class="photo-frame-container">
+                <div class="photo-frame-glow"></div>
+                <div class="photo-frame">
+                    <img src="anh-tot-nghiep-opt.webp" alt="Phạm Thành Nam tốt nghiệp Đại học Công nghệ" class="grad-photo">
+                </div>
+            </div>
+        </section>
+
+        <!-- Welcome Message Section -->
+        <section class="message-section" id="message">
+            <div class="card-glass message-card">
+                <i class="fa-solid fa-quote-left quote-icon-left"></i>
+                <p class="message-text">
+                    "Sau chặng đường học tập với nhiều nỗ lực và trải nghiệm ý nghĩa tại mái trường UET, Nam đã chính thức hoàn thành hành trình đại học của mình.
+                    <br><br>
+                    Sự hiện diện, những lời chúc mừng và sự chia vui của thầy cô, gia đình cùng bạn bè là niềm vinh hạnh lớn nhất của Nam trong ngày lễ đặc biệt này."
+                </p>
+                <i class="fa-solid fa-quote-right quote-icon-right"></i>
+            </div>
+        </section>
+
+        <!-- Info & Countdown Section -->
+        <section class="info-countdown-section" id="details">
+            <div class="section-title-container">
+                <h3 class="section-title">THỜI GIAN & ĐỊA ĐIỂM</h3>
+                <div class="sub-divider"></div>
+            </div>
+
+            <!-- Countdown Widget -->
+            <div class="countdown-container card-glass">
+                <h4 class="countdown-title">LỄ TỐT NGHIỆP SẼ BẮT ĐẦU SAU</h4>
+                <div class="countdown-grid">
+                    <div class="countdown-item">
+                        <span id="days" class="countdown-number">00</span>
+                        <span class="countdown-label">Ngày</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span id="hours" class="countdown-number">00</span>
+                        <span class="countdown-label">Giờ</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span id="minutes" class="countdown-number">00</span>
+                        <span class="countdown-label">Phút</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span id="seconds" class="countdown-number">00</span>
+                        <span class="countdown-label">Giây</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Info Cards -->
+            <div class="info-grid">
+                <div class="info-card card-glass">
+                    <div class="info-icon">
+                        <i class="fa-regular fa-calendar-check"></i>
+                    </div>
+                    <h4>Thời Gian</h4>
+                    <p class="info-detail-main">Chủ Nhật, 05/07/2026</p>
+                    <p class="info-detail-sub">Từ 10h00 đến 14h00</p>
+                </div>
+
+                <div class="info-card card-glass">
+                    <div class="info-icon">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </div>
+                    <h4>Địa Điểm</h4>
+                    <p class="info-detail-main">Hội trường Nguyễn Văn Đạo</p>
+                    <p class="info-detail-sub">144 Xuân Thủy, Cầu Giấy, Hà Nội</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Map Section -->
+        <section class="map-section" id="map">
+            <div class="map-container card-glass">
+                <div class="map-header">
+                    <i class="fa-solid fa-map-location-dot"></i>
+                    <span>Bản Đồ Đường Đi</span>
+                </div>
+                <div class="map-iframe-wrapper">
+                    <!-- Google Maps Iframe pointing to 144 Xuan Thuy -->
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.900482594611!2d105.78018617596954!3d21.03666678750831!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab3b452d2f75%3A0x1d47a5b138e6e5cc!2zMTQ0IFh1w6JuIFRo4buneSwgROG7i2NoIFbhu41uZyBI4bqtdSwgQ-G6p3UgR2nhuqV5LCBIw6AgTuG7mWksIFZpZXRuYW0!5e0!3m2!1sen!2s!4v1700000000000!5m2!1sen!2s" 
+                        width="100%" 
+                        height="300" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="Bản đồ Đại học Quốc gia Hà Nội - 144 Xuân Thủy"
+                        id="google-map-iframe">
+                    </iframe>
+                </div>
+                <div class="map-actions">
+                    <a href="https://maps.app.goo.gl/vYF5uLss7G2Q1M5s7" target="_blank" rel="noopener noreferrer" class="btn-primary">
+                        <i class="fa-solid fa-directions"></i> Chỉ Đường Trên Google Maps
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- RSVP Form Section -->
+        <section class="rsvp-section" id="rsvp">
+            <div class="section-title-container">
+                <h3 class="section-title">XÁC NHẬN THAM DỰ & CHÚC MỪNG</h3>
+                <div class="sub-divider"></div>
+            </div>
+            
+            <div class="rsvp-card card-glass">
+                <p class="rsvp-intro">Hãy báo cho Nam biết sự hiện diện của bạn để Nam chuẩn bị đón tiếp tốt nhất nhé!</p>
+                <form id="rsvp-form" class="rsvp-form">
+                    <div class="form-group">
+                        <label for="guest-name"><i class="fa-regular fa-user"></i> Tên của bạn <span class="required">*</span></label>
+                        <input type="text" id="guest-name" required placeholder="Nhập họ và tên...">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label><i class="fa-regular fa-circle-question"></i> Bạn sẽ tham gia chứ?</label>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="attendance" value="có" checked>
+                                <span class="custom-radio"></span>
+                                Có, mình sẽ đến tham dự
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="attendance" value="không">
+                                <span class="custom-radio"></span>
+                                Rất tiếc, mình không thể đến
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="guest-message"><i class="fa-regular fa-comment-dots"></i> Lời chúc gửi đến Nam</label>
+                        <textarea id="guest-message" rows="4" placeholder="Nhập lời chúc tốt đẹp nhất gửi đến Nam..."></textarea>
+                    </div>
+
+                    <button type="submit" id="btn-submit-rsvp" class="btn-primary btn-submit">
+                        <i class="fa-solid fa-paper-plane"></i> Gửi Xác Nhận & Lời Chúc
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p class="thank-you">CẢM ƠN QUÝ THẦY CÔ, GIA ĐÌNH VÀ BẠN BÈ!</p>
+            <p class="credit">Trang web được thiết kế đặc biệt cho Lễ tốt nghiệp của Phạm Thành Nam © 2026</p>
+        </footer>
+    </main>
+
+    <!-- Success Modal -->
+    <div class="modal-overlay" id="success-modal">
+        <div class="modal-card card-glass">
+            <div class="modal-icon">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <h3>GỬI THÀNH CÔNG!</h3>
+            <p id="modal-desc">Đã sao chép nội dung chúc mừng của bạn. Bạn có muốn gửi trực tiếp tin nhắn này qua Zalo cho Nam không?</p>
+            <div class="modal-actions">
+                <button id="btn-modal-close" class="btn-secondary">Đóng</button>
+                <a id="btn-modal-zalo" href="#" target="_blank" rel="noopener noreferrer" class="btn-primary">
+                    <i class="fa-solid fa-message"></i> Gửi Qua Zalo
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom JS -->
+    <script src="app.js"></script>
+</body>
+</html>
