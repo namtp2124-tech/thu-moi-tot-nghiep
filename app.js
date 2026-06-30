@@ -6,7 +6,9 @@ document.addEventListener('DOMContentLoaded', () => {
         // Zalo Phone Number (Change this to your real phone number, e.g. "0969888888")
         zaloPhoneNumber: "0969999999",
         // Max particles in background
-        maxParticles: 20
+        maxParticles: 20,
+        // Google Sheets Apps Script Web App URL (Paste your URL here, e.g. "https://script.google.com/macros/s/xxxx/exec")
+        googleSheetUrl: ""
     };
 
     /* ==========================================================================
@@ -152,7 +154,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalCloseBtn = document.getElementById('btn-modal-close');
     const modalZaloBtn = document.getElementById('btn-modal-zalo');
 
+    if (modalZaloBtn) {
+        modalZaloBtn.addEventListener('click', () => {
+            alert("Đã sao chép lời chúc vào bộ nhớ tạm. Hãy dán (Paste) vào ô chat Zalo với Nam nhé!");
+        });
+    }
+
     if (rsvpForm) {
+        const btnSubmit = document.getElementById('btn-submit-rsvp');
+        const originalBtnHtml = btnSubmit ? btnSubmit.innerHTML : '';
+
         rsvpForm.addEventListener('submit', (e) => {
             e.preventDefault();
 
@@ -160,6 +171,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const guestName = document.getElementById('guest-name').value.trim();
             const attendance = document.querySelector('input[name="attendance"]:checked').value;
             const guestMessage = document.getElementById('guest-message').value.trim();
+
+            // Show loading state
+            if (btnSubmit) {
+                btnSubmit.disabled = true;
+                btnSubmit.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Đang gửi...`;
+            }
 
             // Construct text message
             let rsvpText = `🎓 XÁC NHẬN THAM DỰ LỄ TỐT NGHIỆP\n`;
@@ -170,32 +187,65 @@ document.addEventListener('DOMContentLoaded', () => {
                 rsvpText += `✉️ Lời chúc: "${guestMessage}"`;
             }
 
-            // Copy to clipboard
-            navigator.clipboard.writeText(rsvpText).then(() => {
-                console.log("RSVP copied to clipboard!");
-                
-                // Configure Zalo redirect URL with encoded message
-                // Zalo chat URL format: https://zalo.me/<phone_number>
-                const encodedMsg = encodeURIComponent(rsvpText);
-                const zaloUrl = `https://zalo.me/${CONFIG.zaloPhoneNumber}`;
-                
-                if (modalZaloBtn) {
-                    modalZaloBtn.href = zaloUrl;
+            // Helper to complete RSVP flow (copy to clipboard and show modal)
+            const completeRsvp = () => {
+                navigator.clipboard.writeText(rsvpText).then(() => {
+                    console.log("RSVP copied to clipboard!");
                     
-                    // Optional: Try to alert guest they can paste the message
-                    modalZaloBtn.addEventListener('click', () => {
-                        alert("Đã sao chép lời chúc vào bộ nhớ tạm. Hãy dán (Paste) vào ô chat Zalo với Nam nhé!");
-                    });
-                }
+                    const zaloUrl = `https://zalo.me/${CONFIG.zaloPhoneNumber}`;
+                    if (modalZaloBtn) {
+                        modalZaloBtn.href = zaloUrl;
+                    }
 
-                // Show Success Modal
-                if (successModal) {
-                    successModal.classList.add('active');
-                }
-            }).catch(err => {
-                console.error("Could not copy RSVP text: ", err);
-                alert("Đã gửi thông tin! Cảm ơn bạn rất nhiều!");
-            });
+                    // Reset button state
+                    if (btnSubmit) {
+                        btnSubmit.disabled = false;
+                        btnSubmit.innerHTML = originalBtnHtml;
+                    }
+
+                    // Show Success Modal
+                    if (successModal) {
+                        successModal.classList.add('active');
+                    }
+                }).catch(err => {
+                    console.error("Could not copy RSVP text: ", err);
+                    // Reset button state
+                    if (btnSubmit) {
+                        btnSubmit.disabled = false;
+                        btnSubmit.innerHTML = originalBtnHtml;
+                    }
+                    alert("Đã gửi thông tin! Cảm ơn bạn rất nhiều!");
+                });
+            };
+
+            // Post to Google Sheet Web App if URL is configured
+            if (CONFIG.googleSheetUrl) {
+                const payload = {
+                    guestName: guestName,
+                    attendance: attendance === 'có' ? 'Có tham gia' : 'Rất tiếc không thể đến',
+                    guestMessage: guestMessage
+                };
+
+                fetch(CONFIG.googleSheetUrl, {
+                    method: 'POST',
+                    mode: 'cors',
+                    headers: {
+                        'Content-Type': 'text/plain;charset=utf-8' // Bypasses preflight CORS preflight
+                    },
+                    body: JSON.stringify(payload)
+                })
+                .then(response => {
+                    console.log("Stored to Google Sheets successfully:", response);
+                    completeRsvp();
+                })
+                .catch(err => {
+                    console.error("Failed to store to Google Sheets (falling back to local clipboard/Zalo):", err);
+                    completeRsvp();
+                });
+            } else {
+                // Direct fallback if no sheet is configured
+                completeRsvp();
+            }
         });
     }
 
