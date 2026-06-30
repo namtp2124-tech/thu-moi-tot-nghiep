@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Max particles in background
         maxParticles: 20,
         // Google Sheets Apps Script Web App URL (Paste your URL here, e.g. "https://script.google.com/macros/s/xxxx/exec")
-        googleSheetUrl: ""
+        googleSheetUrl: "https://script.google.com/macros/s/AKfycby1GvhXquSboe9CUGF0VUip8D42fqdN3vpj5iPWsdl8Zwu_6nHY9BdqP_DRYnkPNgo6/exec"
     };
 
     /* ==========================================================================
